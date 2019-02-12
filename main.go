@@ -5,7 +5,6 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
-	"strings"
 	"io"
 	"os"
 	"path/filepath"
