@@ -5,6 +5,7 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
+	"strings"
 	"io"
 	"os"
 	"path/filepath"
@@ -468,7 +469,7 @@ func main() {
 			failf("Failed to create apk deploy path, error: %s", err)
 		}
 
-		newApkName = strings.replace(apkFile, "/", "-", -1)
+		newApkName := strings.replace(apkFile, "/", "-", -1)
 
 		log.Printf("copy %s to %s, %s", apkFile, deployPth/newApkName)
 
