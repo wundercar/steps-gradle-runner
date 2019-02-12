@@ -472,11 +472,12 @@ func main() {
 
 		var resultPathBuffer bytes.Buffer
 
-    resultPathBuffer.WriteString(deployPth)
+    resultPathBuffer.WriteString(configs.DeployDir)
     resultPathBuffer.WriteString("/")
     resultPathBuffer.WriteString(newApkName)
 
-    resultPath := resultPathBuffer.String()
+    resultPath := strings.Split(resultPathBuffer.String(), "-bundle-")[1]
+
 
 		log.Printf("copy %s to %s, %s", apkFile, resultPath)
 
