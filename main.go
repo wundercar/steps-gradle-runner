@@ -470,13 +470,13 @@ func main() {
 
 		newApkName := strings.Replace(apkFile, "/", "-", -1)
 
-		buf := bytes.Buffer
+		var resultPathBuffer bytes.Buffer
 
-    buf.WriteString(deployPth)
-    buf.WriteString("/")
-    buf.WriteString(newApkName)
+    resultPathBuffer.WriteString(deployPth)
+    resultPathBuffer.WriteString("/")
+    resultPathBuffer.WriteString(newApkName)
 
-    resultPath := buf.String()
+    resultPath := resultPathBuffer.String()
 
 		log.Printf("copy %s to %s, %s", apkFile, resultPath)
 
