@@ -478,10 +478,11 @@ func main() {
 
     resultPath := strings.Split(resultPathBuffer.String(), "-bundle-")[1]
 
+    newApkPath := configs.DeployDir + "/" + resultPath
 
-		log.Printf("copy %s to %s", apkFile, configs.DeployDir + "/" + resultPath)
+		log.Printf("copy %s to %s", apkFile, newApkPath)
 
-		if err := command.CopyFile(apkFile, resultPath); err != nil {
+		if err := command.CopyFile(apkFile, newApkPath); err != nil {
 			failf("Failed to copy apk, error: %s", err)
 		}
 
