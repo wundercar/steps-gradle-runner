@@ -468,8 +468,11 @@ func main() {
 			failf("Failed to create apk deploy path, error: %s", err)
 		}
 
-		log.Printf("copy %s to %s", apkFile, deployPth)
-		if err := command.CopyFile(apkFile, deployPth); err != nil {
+		newApkName = strings.replace(apkFile, "/", "-", -1)
+
+		log.Printf("copy %s to %s, %s", apkFile, deployPth/newApkName)
+
+		if err := command.CopyFile(apkFile, deployPth/newApkName); err != nil {
 			failf("Failed to copy apk, error: %s", err)
 		}
 
