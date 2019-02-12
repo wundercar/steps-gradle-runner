@@ -470,9 +470,17 @@ func main() {
 
 		newApkName := strings.Replace(apkFile, "/", "-", -1)
 
-		log.Printf("copy %s to %s, %s", apkFile, deployPth/newApkName)
+		buf := bytes.Buffer
 
-		if err := command.CopyFile(apkFile, deployPth/newApkName); err != nil {
+    buf.WriteString(deployPth)
+    buf.WriteString("/")
+    buf.WriteString(newApkName)
+
+    resultPath := buf.String()
+
+		log.Printf("copy %s to %s, %s", apkFile, resultPath)
+
+		if err := command.CopyFile(apkFile, resultPath); err != nil {
 			failf("Failed to copy apk, error: %s", err)
 		}
 
