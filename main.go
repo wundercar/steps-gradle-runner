@@ -468,8 +468,21 @@ func main() {
 			failf("Failed to create apk deploy path, error: %s", err)
 		}
 
-		log.Printf("copy %s to %s", apkFile, deployPth)
-		if err := command.CopyFile(apkFile, deployPth); err != nil {
+		newApkName := strings.Replace(apkFile, "/", "-", -1)
+
+		var resultPathBuffer bytes.Buffer
+
+    resultPathBuffer.WriteString(configs.DeployDir)
+    resultPathBuffer.WriteString("/")
+    resultPathBuffer.WriteString(newApkName)
+
+    resultPath := strings.Split(resultPathBuffer.String(), "-bundle-")[1]
+
+    newApkPath := configs.DeployDir + "/" + resultPath
+
+		log.Printf("copy %s to %s", apkFile, newApkPath)
+
+		if err := command.CopyFile(apkFile, newApkPath); err != nil {
 			failf("Failed to copy apk, error: %s", err)
 		}
 
@@ -582,3 +595,4 @@ func main() {
 		log.Donef("The mapping path is now available in the Environment Variable: $BITRISE_MAPPING_PATH (value: %s)", lastCopiedMappingFile)
 	}
 }
+
