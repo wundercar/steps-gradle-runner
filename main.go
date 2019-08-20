@@ -478,7 +478,7 @@ func main() {
 	
     resultPath := resultPathBuffer.String()
 	
-     if strings.contains("-bundle-") {
+     if strings.Contains("-bundle-") {
 	resultPath = strings.Split(resultPathBuffer.String(), "-bundle-")[1]
 		}
 
