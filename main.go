@@ -476,6 +476,8 @@ func main() {
     resultPathBuffer.WriteString("/")
     resultPathBuffer.WriteString(newApkName)
 
+    log.Printf(resultPathBuffer.String())
+	
     resultPath := strings.Split(resultPathBuffer.String(), "-bundle-")[1]
 
     newApkPath := configs.DeployDir + "/" + resultPath
