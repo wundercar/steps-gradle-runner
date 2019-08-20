@@ -478,9 +478,10 @@ func main() {
 
     log.Infof(resultPathBuffer.String())
 	
-    resultPath := strings.Split(resultPathBuffer.String(), "_bundle-")[1]
+    
+	resultPath := strings.Split(resultPathBuffer.String(), "_bundle-")[1]
 
-    log.Infof("split is done")
+    	log.Infof("split is done")
 
     newApkPath := configs.DeployDir + "/" + resultPath
 
