@@ -476,7 +476,7 @@ func main() {
     resultPathBuffer.WriteString("/")
     resultPathBuffer.WriteString(newApkName)
 	
-    resultPath := resultPathBuffer.String()
+    resultPath := newApkName.String()
 	
      if strings.Contains(resultPathBuffer.String(), "-bundle-") {
 	resultPath = strings.Split(resultPathBuffer.String(), "-bundle-")[1]
