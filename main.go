@@ -475,17 +475,14 @@ func main() {
     resultPathBuffer.WriteString(configs.DeployDir)
     resultPathBuffer.WriteString("/")
     resultPathBuffer.WriteString(newApkName)
-
-    log.Infof(resultPathBuffer.String())
 	
-    
-	resultPath := strings.Split(resultPathBuffer.String(), "_bundle-")[1]
-
-    	log.Infof("split is done")
+    resultPath := resultPathBuffer.String()
+	
+     if strings.contains("-bundle-") {
+	resultPath = strings.Split(resultPathBuffer.String(), "-bundle-")[1]
+		}
 
     newApkPath := configs.DeployDir + "/" + resultPath
-
-		log.Infof("new apk path is done")
 
 		log.Printf("copy %s to %s", apkFile, newApkPath)
 
